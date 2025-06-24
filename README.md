@@ -9,7 +9,7 @@ This ETL (Extract, Transform, Load) lab demonstrates a complete data pipeline us
 ### Project Structure
 
 ```
-ETL_Midterm_<FirstName>_<IDLast3Digits>/
+ETL_Midterm_Justice_444
 │
 ├── data/
 │   ├── raw_data.csv
@@ -96,10 +96,7 @@ ETL_Midterm_<FirstName>_<IDLast3Digits>/
 ---
 
 ## 5. Screenshot of Data Preview
-
-Below is a sample preview of the `full_data` table after loading into SQLite:
-
-*Add your screenshot or example table here.*
+Refer to the specific file or folder from the repo structure for full codes, outputs, tables and visualization diagrams presentations.
 
 ---
 
