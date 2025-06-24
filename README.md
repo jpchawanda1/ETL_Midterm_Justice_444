@@ -1,24 +1,32 @@
 # ETL Midterm Justice 444
 
-This project demonstrates a simple ETL (Extract, Transform, Load) pipeline using Python and pandas. The pipeline consists of three main steps:
-
-- Adds a 'total_price' column as quantity × unit_price
-- **Ensures that `quantity`, `unit_price`, and `total_price` columns are stored as whole numbers (integers) in the transformed CSVs and loaded database tables.**
-- Removes duplicate rows
-
-- The SQLite database is created in the `loaded/` directory.
-- The transformed CSVs are saved in the `transformed/` directory.
-- The preview in the load step shows the first 5 rows of the loaded data.
-- All price and quantity figures are stored as integers (no decimals) for consistency.
-
-### etl_load.ipynb
-- Loads the transformed CSVs into a SQLite database (`loaded/etl_results.db`).
-- Writes two tables: `full_data` and `incremental_data`.
-- Previews the first 5 rows of the `full_data` table using a SQL query, displaying the data in a formatted table with the correct column order.
 # ETL Lab Project
 
 ## 1. Project Overview
 This ETL (Extract, Transform, Load) lab demonstrates a complete data pipeline using Python. The project extracts raw and incremental data, applies multiple transformations (including cleaning, categorization, and formatting), and loads the results into a SQLite database for further analysis. The workflow is organized into modular Jupyter notebooks for each ETL phase.
+
+```
+ETL_Midterm_<FirstName>_<IDLast3Digits>/
+│
+├── data/
+│   ├── raw_data.csv
+│   └── incremental_data.csv
+│
+├── transformed/
+│   ├── transformed_full.csv
+│   └── transformed_incremental.csv
+│
+├── loaded/
+│   ├── full_data.db or full_data.parquet
+│   └── incremental_data.db or incremental_data.parquet
+│
+├── etl_extract.ipynb
+├── etl_transform.ipynb
+├── etl_load.ipynb
+├── etl_visualization.ipynb
+├── README.md
+└── .gitignore
+```
 
 
 ## 2. ETL Phases
