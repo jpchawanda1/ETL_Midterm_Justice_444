@@ -1,0 +1,11 @@
+order_id,customer_name,product,Purpose,quantity,unit_price,total_price,order_date,region
+101,Alice,Laptop,Leisure,2.0,900.0,1800.0,2024-05-09,Central
+102,Unknown,Laptop,Leisure,1.0,300.0,300.0,2024-05-07,Central
+103,Unknown,Laptop,Leisure,1.0,600.0,600.0,2024-05-04,Central
+104,Unknown,Tablet,Work,2.0,300.0,600.0,2024-05-26,Central
+105,Heidi,Tablet,Other,2.0,600.0,1200.0,2024-05-21,North
+106,Unknown,Laptop,Work,2.0,600.0,1200.0,2024-05-18,Central
+107,Unknown,Tablet,Work,1.0,600.0,600.0,2024-05-13,Central
+108,Unknown,Laptop,Other,2.0,600.0,1200.0,2024-05-11,Unknown
+109,Grace,Laptop,Leisure,2.0,600.0,1200.0,2024-05-29,Central
+110,Heidi,Phone,Other,2.0,900.0,1800.0,2024-05-24,Unknown
