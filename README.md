@@ -1,3 +1,16 @@
+# ETL Midterm Justice 444
+
+This project demonstrates a simple ETL (Extract, Transform, Load) pipeline using Python and pandas. The pipeline consists of three main steps:
+
+- Adds a 'total_price' column as quantity × unit_price
+- **Ensures that `quantity`, `unit_price`, and `total_price` columns are stored as whole numbers (integers) in the transformed CSVs and loaded database tables.**
+- Removes duplicate rows
+
+- The SQLite database is created in the `loaded/` directory.
+- The transformed CSVs are saved in the `transformed/` directory.
+- The preview in the load step shows the first 5 rows of the loaded data.
+- All price and quantity figures are stored as integers (no decimals) for consistency.
+
 # 6. Summary of All Data Updates by Notebook
 
 ### etl_extract.ipynb
@@ -13,9 +26,9 @@
   - Fills missing numeric values with the column mean (rounded to 1 significant figure).
   - Fills missing datetime values with `1970-01-01`.
 - Converts all date columns to datetime and strips time (keeps only the date).
-- Categorizes the `Purpose` column into broader groups: `Leisure`, `Work`, `Education`, or `Other`.
+- Categorizes the `product` column into broader groups using a new `product_category` column (e.g., Apparel, Electronics, Books, Food & Beverage, Other).
 - Adds a new column `total_price` as `quantity * unit_price`.
-- Standardizes column order so that `Purpose` comes after `product` and `total_price` comes after `unit_price`.
+- Standardizes column order so that `product_category` comes after `product` and `total_price` comes after `unit_price`.
 - Saves the transformed data as `transformed/transformed_full.csv` and `transformed/transformed_incremental.csv`.
 
 ### etl_load.ipynb
@@ -30,7 +43,7 @@ This ETL (Extract, Transform, Load) lab demonstrates a complete data pipeline us
 
 ## 2. ETL Phases
 - **etl_extract.ipynb**: Extracts raw and incremental datasets from CSV files and prepares them for transformation.
-- **etl_transform.ipynb**: Applies at least four meaningful transformations to both datasets, such as removing duplicates, handling missing values, converting date columns, and categorizing the 'Purpose' column. Outputs are saved as transformed CSV files.
+- **etl_transform.ipynb**: Applies at least four meaningful transformations to both datasets, such as removing duplicates, handling missing values, converting date columns, and categorizing the `product` column. Outputs are saved as transformed CSV files.
     - **Transformations Applied (with Before/After Examples):**
         1. **Remove Duplicate Rows**
            - *What/Why:* Ensures each record is unique, preventing double-counting and data skew.
@@ -54,10 +67,10 @@ This ETL (Extract, Transform, Load) lab demonstrates a complete data pipeline us
            - *Before:* `order_date: 2024-01-01 12:34:56`
            - *After:* `order_date: 2024-01-01`
 
-        4. **Categorize 'Purpose' Column**
-           - *What/Why:* Groups similar purposes for easier analysis and reporting.
-           - *Before:* `Purpose: Tourism, Business, Study, Other`
-           - *After:* `Purpose: Leisure, Work, Education, Other`
+        4. **Categorize 'product' Column**
+           - *What/Why:* Groups similar products for easier analysis and reporting.
+           - *Before:* `product: iPhone, T-shirt, Coke, Book`
+           - *After:* `product_category: Electronics, Apparel, Food & Beverage, Books, Other`
 
         5. **Enrichment: Add 'total_price' Column**
            - *What/Why:* Provides a calculated field for total transaction value, useful for financial analysis.
@@ -67,7 +80,7 @@ This ETL (Extract, Transform, Load) lab demonstrates a complete data pipeline us
         6. **Column Order Standardization**
            - *What/Why:* Ensures consistent column order for easier reading and downstream processing.
            - *Before:* Columns in arbitrary order.
-           - *After:* `Purpose` comes after `product`, `total_price` comes after `unit_price`.
+           - *After:* `product_category` comes after `product`, `total_price` comes after `unit_price`.
 - **etl_load.ipynb**: Loads the transformed CSV files into a SQLite database (`loaded/etl_results.db`). Previews the stored results using SQL queries and displays the data in a formatted table.
 
 ## 3. Tools Used
@@ -92,9 +105,24 @@ This ETL (Extract, Transform, Load) lab demonstrates a complete data pipeline us
 4. **Check the `transformed/` folder** for output CSVs and the `loaded/` folder for the SQLite database.
 5. **Preview results** in the notebook output or by querying the SQLite database directly.
 
+
 ## 5. Screenshot of Data Preview
 Below is a sample preview of the `full_data` table after loading into SQLite:
 
+
+## 6. Visualizations
+
+This project provides visualizations to analyze the transformed sales data, using data loaded directly from the SQLite database (`loaded/etl_results.db`).
+
+### Included Visualizations
+
+- **Product Comparison**
+  - Grouped bar chart and dual-axis plot showing the number of items sold and total revenue per product in 2024.
+
+- **Calendar Heatmap**
+  - Displays daily transaction counts for each month in 2024, with integer annotations, up to the latest available date in the data.
+
+All transaction counts in the visualizations are shown as integers. The visualizations are implemented in the `etl_visualization.ipynb` notebook and are designed to be robust and up-to-date.
 
 # ETL_Midterm_Justice_444
 This project demonstrates Full Extraction and Incremental Extraction concepts in ETL (Extract, Transform, Load) processes using Python and pandas. Implemented as a Jupyter Notebook.
