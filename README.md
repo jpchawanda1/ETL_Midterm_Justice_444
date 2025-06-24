@@ -11,26 +11,6 @@ This project demonstrates a simple ETL (Extract, Transform, Load) pipeline using
 - The preview in the load step shows the first 5 rows of the loaded data.
 - All price and quantity figures are stored as integers (no decimals) for consistency.
 
-# 6. Summary of All Data Updates by Notebook
-
-### etl_extract.ipynb
-- Loads `raw_data.csv` and `incremental_data.csv`.
-- Previews the data using `.head()` and `.info()`.
-- Records and displays missing values, duplicate rows, and column names as tables.
-- Saves backup copies as `data/raw_data_copy.csv` and `data/incremental_data_copy.csv`.
-
-### etl_transform.ipynb
-- Removes duplicate rows from both datasets.
-- Handles missing values:
-  - Fills missing string/object values with `'Unknown'`.
-  - Fills missing numeric values with the column mean (rounded to 1 significant figure).
-  - Fills missing datetime values with `1970-01-01`.
-- Converts all date columns to datetime and strips time (keeps only the date).
-- Categorizes the `product` column into broader groups using a new `product_category` column (e.g., Apparel, Electronics, Books, Food & Beverage, Other).
-- Adds a new column `total_price` as `quantity * unit_price`.
-- Standardizes column order so that `product_category` comes after `product` and `total_price` comes after `unit_price`.
-- Saves the transformed data as `transformed/transformed_full.csv` and `transformed/transformed_incremental.csv`.
-
 ### etl_load.ipynb
 - Loads the transformed CSVs into a SQLite database (`loaded/etl_results.db`).
 - Writes two tables: `full_data` and `incremental_data`.
